@@ -72,35 +72,35 @@
     <label style="margin-left: 40vh; font-size:30px;"><b>grocery</b></label>  
     <br><br>
 
-    <input type="text" placeholder="grocerry name 1 ">
+    <input type="text" id="groc1" placeholder="grocerry name 1 ">
     <input type="number" id="price_of_grocery_1"  placeholder="price "  >
     
     <br>
     <br>
-    <input type="text" placeholder="grocerry name 2 ">
+    <input type="text" id="groc2" placeholder="grocerry name 2 ">
     <input type="number" id="price_of_grocery_2"  placeholder="price " >
 
     <br>
     <br>
-    <input type="text" placeholder="grocerry name 3 ">
+    <input type="text" id="groc3" placeholder="grocerry name 3 ">
     <input type="number" id="price_of_grocery_3"  placeholder="price " >
 
 
     <br>
     <br>
-    <input type="text" placeholder="grocerry name 4 ">
+    <input type="text" id="groc4" placeholder="grocerry name 4 ">
     <input type="number" id="price_of_grocery_4"  placeholder="price " >
 
     <br>
     <br>
 
-    <input type="text" placeholder="grocerry name 5 ">
+    <input type="text" id="groc5" placeholder="grocerry name 5 ">
     <input type="number" id="price_of_grocery_5"  placeholder="price " >
 
     <br>
     <br>
 
-    <input type="text" placeholder="grocerry name 6 ">
+    <input type="text" id="groc6" placeholder="grocerry name 6 ">
     <input type="number" id="price_of_grocery_6"  placeholder="price " >
 
     <br>
@@ -108,51 +108,96 @@
     <hr>
     <center><button class="b1" onclick="myCalculate()">calculate</button></center>
 <hr>
-    <br>
+    <!-- <br> -->
     <center><b><p id="sum1"></p></b></center>
     <!-- <hr> -->
+    <center><button id="pie_chart" onclick="piechart()">pieChart</button></center>
 </div>
 
+<div>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+</div>
 <script>
+
+var total_tea,breakfast,grocerry1,grocerry2,grocerry3,grocerry4,grocerry5,grocerry6,total;
+
 function myCalculate(){
     var tea_count=parseInt(document.getElementById("no_tea").value|1)
     var tea_price=parseInt(document.getElementById("price_tea").value|0);
-    var total_tea=tea_count*tea_price;
+     total_tea=tea_count*tea_price;
     // console.log(result);
 
-    var breakfast=parseInt(document.getElementById("price_breakfast").value|0);
+     breakfast=parseInt(document.getElementById("price_breakfast").value|0);
     // document.getElementById("txtresult").value = breakfast ;
     // document.getElementById("cal_preview").value;
 
-    var grocerry1=parseInt(document.getElementById("price_of_grocery_1").value|0);
+     grocerry1=parseInt(document.getElementById("price_of_grocery_1").value|0);
     // var grocerry1=document.getElementById("price_of_grocery_1").value;
     
-    var grocerry2=parseInt(document.getElementById("price_of_grocery_2").value|0);
+     grocerry2=parseInt(document.getElementById("price_of_grocery_2").value|0);
     // document.getElementById("txtresult").value = grocerry2 ;
       
-    var grocerry3=parseInt(document.getElementById("price_of_grocery_3").value|0);
+     grocerry3=parseInt(document.getElementById("price_of_grocery_3").value|0);
     // document.getElementById("txtresult").value = grocerry3 ;
       
-    var grocerry4=parseInt(document.getElementById("price_of_grocery_4").value|0);
+     grocerry4=parseInt(document.getElementById("price_of_grocery_4").value|0);
     // document.getElementById("txtresult").value = grocerry4 ;
       
-    var grocerry5=parseInt(document.getElementById("price_of_grocery_5").value|0);
+     grocerry5=parseInt(document.getElementById("price_of_grocery_5").value|0);
     // document.getElementById("txtresult").value = grocerry5 ;
 
       
-    var grocerry6=parseInt(document.getElementById("price_of_grocery_6").value|0);
+     grocerry6=parseInt(document.getElementById("price_of_grocery_6").value|0);
     // document.getElementById("txtresult").value = grocerry6 ;
 
 
-    var total=total_tea+breakfast+grocerry1+grocerry2+grocerry3+grocerry4+grocerry5+grocerry6;
+     total=total_tea+breakfast+grocerry1+grocerry2+grocerry3+grocerry4+grocerry5+grocerry6;
 
     //output shows in input box
     // document.getElementById("txtresult").value = total;
     
-    document.getElementById('sum1').innerText = 'The sum of the numbers are: ' + total;
+    document.getElementById('sum1').innerText = 'Total Expense : ₹' + total;
+}
+
+
+
+function piechart(){
+
+    // var grocery1_name=document.getElementById("groc1").value;
+    // var grocery2_name=document.getElementById("groc4").value;
+    // var grocery3_name=document.getElementById("groc4").value;
+    // var grocery4_name=document.getElementById("groc4").value;
+    // var grocery5_name=document.getElementById("groc4").value;
+    // var grocery6_name=document.getElementById("groc4").value;
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "Your Today's Expenditure "
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+			{y: total_tea, label: "tea"},
+			{y: breakfast, label: "breakfast"},
+			{y: grocerry1, label: "groc1"},
+			{y: grocerry2, label: "groc2"},
+			{y: grocerry3, label: "groc3"},
+			{y: grocerry4, label: "groc4"},
+			{y: grocerry5, label: "groc5"},
+			{y: grocerry6, label: "groc6"}
+		]
+	}]
+});
+chart.render();
 }
 
 </script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>
 </html>
