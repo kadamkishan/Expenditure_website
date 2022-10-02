@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense</title>
+    <!-- <script src="index.css"></script> -->
+    <style>
+        body{
+            font-family:'Courier New', Courier, monospace;
+            background-color: rgb(232, 30, 61)
+            
+        }
+        
+        .container1{
+            background-color: rgb(180, 191, 213);
+            /* padding: 0%; */
+            align-content: center;
+            border: 10px solid black;
+            max-width: 800px;
+            margin: auto;
+            height: 95vh;
+            
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type=text] {
+        /* width: 100%; */
+        /* padding: 15px; */
+        margin:  0 15vh ;
+        /* display: inline-block; */
+        /* border: none; */
+        /* background: #f1f1f1; */
+        }
+
+
+        .b1 {
+            background-color: #2a6ead; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container1">
+
+    <center><h1><b>Expenses</b></h1></center>
+    <hr>
+    <center style="font-size:20px;"><h4>Enter amount </h4></center>
+    <hr>
+    
+    <label style="margin-left: 22vh;"><b>tea</b></label>
+        <input type="number" id="no_tea" style="width: 60px;" placeholder="counts" min="0" max="11" >
+    <input type="number" id="price_tea" placeholder="price of tea" >
+   
+
+    <br><br>
+
+    <label style="margin-left: 20vh;"><b>BreakFast</b>  </label>
+    <input style="margin-left: 4vh;" type="number" id="price_breakfast" placeholder="price of BreakFast" s>
+
+    <br>
+    <br><hr>
+    <label style="margin-left: 40vh; font-size:30px;"><b>grocery</b></label>  
+    <br><br>
+
+    <input type="text" placeholder="grocerry name 1 ">
+    <input type="number" id="price_of_grocery_1"  placeholder="price "  >
+    
+    <br>
+    <br>
+    <input type="text" placeholder="grocerry name 2 ">
+    <input type="number" id="price_of_grocery_2"  placeholder="price " >
+
+    <br>
+    <br>
+    <input type="text" placeholder="grocerry name 3 ">
+    <input type="number" id="price_of_grocery_3"  placeholder="price " >
+
+
+    <br>
+    <br>
+    <input type="text" placeholder="grocerry name 4 ">
+    <input type="number" id="price_of_grocery_4"  placeholder="price " >
+
+    <br>
+    <br>
+
+    <input type="text" placeholder="grocerry name 5 ">
+    <input type="number" id="price_of_grocery_5"  placeholder="price " >
+
+    <br>
+    <br>
+
+    <input type="text" placeholder="grocerry name 6 ">
+    <input type="number" id="price_of_grocery_6"  placeholder="price " >
+
+    <br>
+    <hr><center><h5>To calculate click calculate</h5></center>
+    <hr>
+    <center><button class="b1" onclick="myCalculate()">calculate</button></center>
+<hr>
+    <br>
+    <center><b><p id="sum1"></p></b></center>
+    <!-- <hr> -->
+</div>
+
+<script>
+function myCalculate(){
+    var tea_count=parseInt(document.getElementById("no_tea").value|1)
+    var tea_price=parseInt(document.getElementById("price_tea").value|0);
+    var total_tea=tea_count*tea_price;
+    // console.log(result);
+
+    var breakfast=parseInt(document.getElementById("price_breakfast").value|0);
+    // document.getElementById("txtresult").value = breakfast ;
+    // document.getElementById("cal_preview").value;
+
+    var grocerry1=parseInt(document.getElementById("price_of_grocery_1").value|0);
+    // var grocerry1=document.getElementById("price_of_grocery_1").value;
+    
+    var grocerry2=parseInt(document.getElementById("price_of_grocery_2").value|0);
+    // document.getElementById("txtresult").value = grocerry2 ;
+      
+    var grocerry3=parseInt(document.getElementById("price_of_grocery_3").value|0);
+    // document.getElementById("txtresult").value = grocerry3 ;
+      
+    var grocerry4=parseInt(document.getElementById("price_of_grocery_4").value|0);
+    // document.getElementById("txtresult").value = grocerry4 ;
+      
+    var grocerry5=parseInt(document.getElementById("price_of_grocery_5").value|0);
+    // document.getElementById("txtresult").value = grocerry5 ;
+
+      
+    var grocerry6=parseInt(document.getElementById("price_of_grocery_6").value|0);
+    // document.getElementById("txtresult").value = grocerry6 ;
+
+
+    var total=total_tea+breakfast+grocerry1+grocerry2+grocerry3+grocerry4+grocerry5+grocerry6;
+
+    //output shows in input box
+    // document.getElementById("txtresult").value = total;
+    
+    document.getElementById('sum1').innerText = 'The sum of the numbers are: ' + total;
+}
+
+</script>
+
+</body>
+</html>
